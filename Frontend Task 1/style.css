@@ -1,0 +1,332 @@
+.navbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#your-name{
+    margin-left: 30px;
+    margin-top: 15px;
+    color: black;
+    font-weight: 600;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+}
+.nav-item{
+    list-style-type: none;
+    padding-right: 50px;
+    margin-top: 10px;
+    transition: transform 300ms ease, color 300ms ease;
+}
+.nav-item a{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(48, 48, 48);
+    font-size: 1.3em;
+    font-weight: 500;
+}
+.nav-item:hover{
+    color: rgb(23, 43, 195);
+    transform: scale(1.2);
+}
+.my-hr{
+    padding: 0.8px;
+    margin-right: 70px;
+    margin-left : 50px;
+}
+#main-heading-text{
+    text-align: center;
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 30vh;
+    font-weight: 600;
+}
+/* Cards -------------------------------------------------------- */
+.card-container{
+    padding: 5%;
+    padding-top: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 30px;
+}
+.my-card-1{
+    box-sizing: border-box;
+    margin-right: 20px;
+    transition-duration: 300ms;
+    cursor: pointer;
+    padding: 5%;
+    margin-bottom: 5%;
+    border-radius: 40px;
+}
+.my-card-1:hover{
+    transform: scale(1.03, 1.03);
+    background-color: rgb(226, 239, 255);
+}
+.my-card-2{
+    box-sizing: border-box;
+    margin-right: 20px;
+    overflow: hidden;
+    transition-duration: 300ms;
+    cursor: pointer;
+    padding: 5%;
+    margin-bottom: 5%;
+    border-radius: 30px;
+}
+.my-card-2:hover{
+    transform: scale(1.03, 1.03);
+    background-color: rgb(226, 239, 255);
+}
+.my-card-1 img{
+    width: 100%;
+    border-top-left-radius : 20px;
+    border-top-right-radius: 20px;
+}
+.my-card-2 img{
+    float: left;
+    max-width: 50%;
+    padding-right: 10px;
+}
+.my-card-body-2{
+    overflow: hidden;
+}
+.my-card-author{
+    padding-top: 30px;
+    color: rgb(115, 32, 249);
+    text-align: left;
+    font-weight: 500;
+    margin: 0px;
+}
+.my-card-title{
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.my-card-tags{
+    display: flex;
+}
+.my-card-text{
+    color: grey;
+}
+.my-card-tags li{
+    list-style-type: none;
+    font-weight: 500;
+    margin-left  : 10px;
+    padding-left : 10px;
+    padding-right: 10px;
+    border-radius: 100px;
+}
+/* new-card ---------------------------------------------------------- */
+.new-card-container{
+    /* border: solid 1px red; */
+    padding: 5%;
+    padding-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5%;
+}
+.new-card{
+    /* border: solid 1px red; */
+    padding: 5%;
+    width: 100%;
+    cursor: pointer;
+    transition-duration: 300ms;
+    border-radius: 40px;
+}
+.new-card:hover{
+    transform: scale(1.02, 1.02);
+    background-color: rgb(226, 239, 255);
+}
+.new-card-img{
+    max-width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.new-card-author{
+    padding-top: 10px;
+    color: rgb(115, 32, 249);
+    text-align: left;
+    font-weight: 500;
+    margin: 0px;
+}
+.new-card-title{
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.new-card-text{
+    color: grey;
+}
+
+/* Footer ------------------------------------------------------------------------- */
+.footer-navbar{
+    /* border: solid 1px red; */
+    list-style: none;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    transition: transform 300ms ease, color 300ms ease;
+}
+.footer-navbar li{
+    padding-left: 4%;
+    color: rgb(48, 48, 48);
+    font-weight: 480;
+    transform: scale 300ms;
+    transition: transform 300ms ease, color 300ms ease;
+    cursor: pointer;
+}
+.footer-navbar li a{
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+    font-weight: 480;
+    position: relative;
+    transition: color 300ms ease;
+}
+.footer-navbar li:hover{
+    transform: scale(1.1);
+}
+.footer-navbar li a:hover{
+    color: rgb(23, 43, 195);
+}
+.footer-navbar li a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: rgb(23, 43, 195);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 300ms ease;
+}
+.footer-navbar li a:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+/* Responsive ---------------------------------------------------------------------- */
+@media (max-width: 1024px){
+    #main-heading-text{
+        font-size: 20vh;
+    }
+    .card-container, .new-card-container{
+        grid-template-columns: 1fr;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .actual-footer {
+        padding-top: 35%;
+    }
+}
+@media (max-width: 768px){
+    #your-name{
+        font-weight: 700;
+    }
+    .navbar-container{
+        flex-direction: column;
+        display: inline-block;
+    }
+    .navbar{
+        flex-direction: column;
+    }
+    .nav-item{
+        padding-right: 0;
+        padding-left: 0;
+        margin-left: 0px;
+        padding-bottom: 10px;
+    }
+    #main-heading-text{
+        font-size: 20vh;
+    }
+    .card-container{
+        grid-template-columns: 1fr;
+    }
+    .new-card-container{
+        grid-template-columns: 1fr;
+    }
+    .my-card-2-img{
+        max-width: 100%;
+    }
+    .my-card-2 img{
+        float: none;
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+        border-top-left-radius : 20px;
+        border-top-right-radius: 20px;
+    }
+    .card-container, .new-card-container{
+        grid-template-columns: 1fr;
+    }
+    .navbar-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    #main-heading-text{
+        font-size: 10vh;
+    }
+    .actual-footer {
+        padding-top: 50%;
+    }
+    .footer-navbar{
+        display: inline-block;
+    }
+    .footer-navbar li{
+        padding: 5px;
+    }
+}
+@media (max-width: 480px){
+    .navbar-container {
+        display: inline-block;
+        padding-left: 0px;
+        margin-right: 0px;
+        text-align: left;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: left;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+    .nav-item {
+        text-align: left;
+        padding-right: 0px;
+        padding-left : 0px;
+        margin-right : 0px;
+    }
+    #your-name{
+        font-weight: 700;
+    }
+    .my-card-title, .new-card-title{ font-size: 1.2em; }
+    .nav-item a{ font-size: 1.1em; }
+    .my-card-2-img{
+        max-width: 100%;
+    }
+    .my-card-2 img{
+        float: none;
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+        border-top-left-radius : 20px;
+        border-top-right-radius: 20px;
+    }
+    .my-card-title, .new-card-title{
+        font-size: 1.2em;
+        margin-top: 15px;
+    }
+    .actual-footer {
+        padding-top: 50%;
+    }
+    .footer-navbar{
+        display: inline-block;
+    }
+    .footer-navbar li{
+        padding: 5px;
+    }
+}
