@@ -12,12 +12,11 @@ const MemeCreate = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [memeData, setMemeData] = useState<any>(null);
 
-  // Sending POST request to get meme image
   const postMemeDetails = async () => {
     const formData = new FormData();
     formData.append("template_id", id || "");
-    formData.append("username", "sudevOP");
-    formData.append("password", "SudevDa06");
+    formData.append("username", import.meta.env.VITE_TEST_VAR.VITE_IMGFLIP_USERNAME || "");
+    formData.append("password", import.meta.env.VITE_TEST_VAR.VITE_IMGFLIP_PASSWORD || "");
     formData.append("text0", text0);
     formData.append("text1", text1);
 
