@@ -6,6 +6,8 @@ import MemeCreatedDetails from "./MemeCreatedDetails";
 const MemeCreate = () => {
   const { id } = useParams<{ id: string }>();
   const URL_caption_image = "https://api.imgflip.com/caption_image";
+  const apiUsername       = "sudevImgFlipApi";
+  const apiPassword       = "sudevImgFlipApi";
 
   const [text0, setText0] = useState<string>("");
   const [text1, setText1] = useState<string>("");
@@ -15,8 +17,8 @@ const MemeCreate = () => {
   const postMemeDetails = async () => {
     const formData = new FormData();
     formData.append("template_id", id || "");
-    formData.append("username", import.meta.env.VITE_TEST_VAR.VITE_IMGFLIP_USERNAME || "");
-    formData.append("password", import.meta.env.VITE_TEST_VAR.VITE_IMGFLIP_PASSWORD || "");
+    formData.append("username", apiUsername || "");
+    formData.append("password", apiPassword || "");
     formData.append("text0", text0);
     formData.append("text1", text1);
 
