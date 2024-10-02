@@ -8,3 +8,6 @@ Backend - https://savory-worm-69e.notion.site/Full-Stack-Django-Backend-Task-2-D
 
 Task 3:
 Fullstack - https://savory-worm-69e.notion.site/Full-Stack-Django-Task-3-AI-Based-Fitness-Application-a22adc0b304b4e6fab3b4fb9c731e3a9?pvs=4
+
+This is a link to [GitHub](https://github.com)  
+This text is on the next line.
