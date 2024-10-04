@@ -4,8 +4,22 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <script>
+            function goToDetailsPage () {
+                const userId = document.getElementById("user-id").value.trim();
+                if(userId !== "") {
+                    window.location.href = `/api/user-details/${userId}/`;
+                } else {
+                    alert("User ID is required!");
+                }
+            }
+        </script>
     </head>
     <body>
         <h1>Helo</h1>
+        <a href="/api/create-user"><button>Create a user</button></a></br>
+        <a href="/api/user-list"><button>Show all users</button></a></br>
+        <button onclick="goToDetailsPage()">Show user details</button>
+        <input id="user-id" type="text" placeholder="Enter if of user">
     </body>
 </html>
