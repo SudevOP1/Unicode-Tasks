@@ -1,10 +1,10 @@
 import React from "react";
-import "../components/SigninComponent.css";
 
 const SigninComponent = () => {
     return (
-        <div className="body">
-            <div className="signin-container">
+        <div className="body flex justify-center items-center">
+            <div className="signin-container flex justify-center items-center">
+                <div className="text-red-500">Test Text</div>
                 <h1>Sign In</h1>
                 <div className="input-field">
                     <p>Email Address</p>

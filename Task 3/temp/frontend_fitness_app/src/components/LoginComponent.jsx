@@ -1,10 +1,9 @@
 import React from "react";
-// import "../components/LoginComponent.css";
 
 const LoginComponent = () => {
     return (
-        <div className="body flex justify-center items-center h-screen">
-            <div className="login-container bg-white shadow-xl rounded-2xl p-10">
+        <div className="body flex justify-center items-center">
+            <div className="login-container flex justify-center items-center">
                 <h1>Login</h1>
                 <div className="input-field">
                     <p>Email Address</p>
@@ -14,8 +13,12 @@ const LoginComponent = () => {
                     <p>Password</p>
                     <input type="password" />
                 </div>
+                <div className="input-field">
+                    <p>Password Again</p>
+                    <input type="password" />
+                </div>
                 <button>Login</button>
-                <a href="">Create an Account</a>
+                <a href="">Already have an account?</a>
             </div>
         </div>
     );

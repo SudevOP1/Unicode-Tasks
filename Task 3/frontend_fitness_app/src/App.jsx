@@ -4,7 +4,7 @@ import SigninComponent from "./components/SigninComponent"
 function App() {
   return (
     <>
-      <SigninComponent />
+      <LoginComponent />
     </>
   )
 }
