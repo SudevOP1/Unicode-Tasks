@@ -1,8 +1,8 @@
-from django.urls import path
+from django.urls import path # type: ignore
 from . import views
 from .views import *
 
-from rest_framework_simplejwt.views import (TokenRefreshView)
+from rest_framework_simplejwt.views import (TokenRefreshView) # type: ignore
 
 urlpatterns = [
     path("", views.getRoutes, name="routes"),

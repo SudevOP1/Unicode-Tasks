@@ -8,7 +8,8 @@ const RegisterPage = () => {
     <div>
         <form onSubmit={registerUser}>
             <h2>Create Account:</h2>
-            <input type="text" className="text-input" name="username" placeholder="Username" style={{ marginTop: "30px" }} />
+            <input type="email" className="text-input" name="email" placeholder="Email" style={{ marginTop: "30px" }} />
+            <input type="text" className="text-input" name="username" placeholder="Username" />
             <input type="password" className="text-input" name="password" placeholder="Password" />
             <br /><br />
 

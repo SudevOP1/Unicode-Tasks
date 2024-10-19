@@ -67,34 +67,58 @@ export const AuthProvider = ({ children }) => {
     };
 
     let registerUser = async (e) => {
+        console.log("registerUser() called")
         e.preventDefault();
-        if(e.target.password.value === e.target.password.value) {
+        console.log("Form data:", {
+            username: e.target.username.value,
+            password: e.target.password.value,
+            email: e.target.email.value,
+            gender: e.target.gender.value,
+            age: e.target.age.value,
+            weight: e.target.weight.value,
+            height: e.target.height.value,
+            fitness_goal: e.target["fitness-goal"].value,
+            weight_goal: e.target.weight_goal.value,
+        });
 
-            let response;
-            try {
-                response = await fetch("http://127.0.0.1:8000/api/register-user/", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        username: e.target.username.value,
-                        password: e.target.password.value,
-                    }),
-                });
-            } catch (error) {
-                return (
-                    <p>Couldn't register You! Try again!</p>
-                );
+        let response;
+        try {
+            response = await fetch("http://127.0.0.1:8000/api/register-user/", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    username       : e.target.username.value,
+                    password       : e.target.password.value,
+                    email          : e.target.email.value,
+                    gender         : e.target.gender.value,
+                    age            : e.target.age.value,
+                    weight         : e.target.weight.value,
+                    height         : e.target.height.value,
+                    fitness_goal   : e.target["fitness-goal"].value,
+                    weight_goal    : e.target.weight_goal.value,
+                }),
+            });
+        } catch (error) {
+            return (
+                <div>
+                    <p>Couldn't register! Try again!</p>
+                    <p>Error: {{ error }}</p>
+                </div>
+            );
+        }
+
+        if (response.ok) {
+            console.log("registered successfully")
+            navigate("/login");
+
+            if(loading) {
+                setLoading(false);
             }
-
-            if (response.ok) {
-                navigate("/login");
-
-                if(loading) {
-                    setLoading(false);
-                }
-            }
+        } else {
+            console.error("Response error:", await response.json());
+            alert("Something went wrong! Try again!");
         }
     };
 

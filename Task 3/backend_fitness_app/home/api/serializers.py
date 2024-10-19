@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer # type: ignore
 from home.models import *
 
 class HealthDetailSerializer(ModelSerializer):

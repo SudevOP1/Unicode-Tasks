@@ -48,13 +48,26 @@ def getHealthDetails(request):
 @api_view(["POST"])
 def registerUser(request):
 
+    print("registerUser view called")
+
     username = request.data.get("username")
     password = request.data.get("password")
+    email    = request.data.get("email")
 
+    # check if username already exists
     if User.objects.filter(username = username).exists():
         return Response(
             {
                 "detail": "A user with this username already exists"
+            },
+            status = status.HTTP_400_BAD_REQUEST
+        )
+    
+    # check if email already exists
+    if User.objects.filter(email = email).exists():
+        return Response(
+            {
+                "detail": "A user with this email already exists"
             },
             status = status.HTTP_400_BAD_REQUEST
         )
@@ -65,6 +78,7 @@ def registerUser(request):
     if created:
         # If the user was just created, set the password
         user.set_password(password)
+        user.email = email
         user.save()
     else:
         # If the user already exists, check if the password matches
@@ -78,8 +92,10 @@ def registerUser(request):
 
     data = request.data.copy()
     data["user"] = user.id
+    data["email"] = email
     data.pop('username', None)
     data.pop('password', None)
+    data.pop('email', None)
 
     # Serialize and save health details
     serializer = HealthDetailSerializer(data=data)
