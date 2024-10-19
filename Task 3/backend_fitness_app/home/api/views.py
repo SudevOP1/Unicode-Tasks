@@ -7,10 +7,10 @@ from rest_framework.decorators  import api_view, permission_classes         # ty
 from rest_framework.permissions import IsAuthenticated                      # type: ignore
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer  # type: ignore
-from rest_framework_simplejwt.views import TokenObtainPairView              # type: ignore
+from rest_framework_simplejwt.views       import TokenObtainPairView        # type: ignore
 
 from .serializers import HealthDetailSerializer
-from home.models import HealthDetail
+from home.models  import HealthDetail
 
 # --------------------------------------------------------------------------------------------------
 

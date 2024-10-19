@@ -70,15 +70,15 @@ export const AuthProvider = ({ children }) => {
         console.log("registerUser() called")
         e.preventDefault();
         console.log("Form data:", {
-            username: e.target.username.value,
-            password: e.target.password.value,
-            email: e.target.email.value,
-            gender: e.target.gender.value,
-            age: e.target.age.value,
-            weight: e.target.weight.value,
-            height: e.target.height.value,
-            fitness_goal: e.target["fitness-goal"].value,
-            weight_goal: e.target.weight_goal.value,
+            username        : e.target.username.value,
+            password        : e.target.password.value,
+            email           : e.target.email.value,
+            gender          : e.target.gender.value,
+            age             : e.target.age.value,
+            weight          : e.target.weight.value,
+            height          : e.target.height.value,
+            fitness_goal    : e.target["fitness-goal"].value,
+            weight_goal     : e.target["weight-goal"].value,
         });
 
         let response;
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
                     weight         : e.target.weight.value,
                     height         : e.target.height.value,
                     fitness_goal   : e.target["fitness-goal"].value,
-                    weight_goal    : e.target.weight_goal.value,
+                    weight_goal    : e.target["weight-goal"].value,
                 }),
             });
         } catch (error) {
@@ -171,10 +171,11 @@ export const AuthProvider = ({ children }) => {
     }, [authTokens, loading, logoutUser]);
 
     let contextData = {
-        user      : user,
-        authTokens: authTokens,
-        loginUser : loginUser,
-        logoutUser: logoutUser,
+        user            : user,
+        authTokens      : authTokens,
+        loginUser       : loginUser,
+        logoutUser      : logoutUser,
+        registerUser    : registerUser,
     };
 
     useEffect(() => {
