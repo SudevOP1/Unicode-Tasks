@@ -1,0 +1,97 @@
+body{
+    background: #323232;
+}
+*{
+    color: white;
+}
+form{
+    padding: 20px 30px;
+}
+h2{
+    font-size: 36px;
+    font-weight: 500;
+    color: #729FED;
+}
+.text-input{
+    background: #434343;
+    color: #C7C7C7;
+    font-size: 1.2rem;
+    border: none;
+    margin-right: 30px;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+.text-input::placeholder{
+    color: #C7C7C7;
+}
+.number-input{
+    background: #434343;
+    color: #C7C7C7;
+    font-size: 1.2rem;
+    border: none;
+    margin-right: 30px;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+.number-input::placeholder{
+    color: #C7C7C7;
+}
+.radio-btns-container{
+    display: flex;
+    flex-direction: row;
+}
+.radio-btns-label{
+    color: #729FED;
+    font-size: 1.3rem;
+    margin-right: 30px;
+}
+.radio-btns{
+    display: flex;
+    flex-direction: column;
+}
+.radio-input{
+    margin-right: 10px;
+    accent-color: #729FED;
+    transform: scale(1.5);
+}
+.radio-label{
+    color: #C7C7C7;
+    font-size: 1.1rem;
+    margin-left: 8px;
+    cursor: pointer;
+}
+a{
+    font-size: 1.3rem;
+    color: #729FED;
+}
+.submit-btn{
+    background: #296ee4;
+    color: white;
+    padding: 5px 25px;
+    border-radius: 1000px;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    margin-right: 20px;
+    border: none;
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+.submit-btn:hover{
+    background: #1f57b9;
+    box-shadow: 0px 0px 20px rgba(10,73,181,1);
+}
+.submit-btn:active{
+    background: #0a49b5;
+    box-shadow: 0px 0px 20px rgb(6, 65, 165);
+
+}
+
+
+.radio-btn{
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.radio-label{
+}

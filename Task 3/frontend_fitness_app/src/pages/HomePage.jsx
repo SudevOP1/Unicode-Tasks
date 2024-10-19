@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import AuthContext from '../context/AuthContext'
+import "./HomePage.css"
 
 const HomePage = () => {
 
@@ -30,6 +31,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>HomePage</h1>
+      
       <ul>
         {healthDetail.map(detail => (
           <li key={detail.id}>{detail.weight}</li>

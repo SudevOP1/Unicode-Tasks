@@ -66,6 +66,38 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    let registerUser = async (e) => {
+        e.preventDefault();
+        if(e.target.password.value === e.target.password.value) {
+
+            let response;
+            try {
+                response = await fetch("http://127.0.0.1:8000/api/register-user/", {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: e.target.username.value,
+                        password: e.target.password.value,
+                    }),
+                });
+            } catch (error) {
+                return (
+                    <p>Couldn't register You! Try again!</p>
+                );
+            }
+
+            if (response.ok) {
+                navigate("/login");
+
+                if(loading) {
+                    setLoading(false);
+                }
+            }
+        }
+    };
+
     let logoutUser = () => {
         setAuthTokens(null);
         setUser(null);
