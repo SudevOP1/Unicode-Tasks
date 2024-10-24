@@ -9,7 +9,7 @@
     height: auto;
     padding: 15px 0px;
     /* border: 1px solid red; */
-    background: #4E4E4E;
+    background: #005F73;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -37,10 +37,10 @@
     text-decoration: none;
     transition-duration: 200ms;
     padding: 5px 10px;
-    border: 1px solid #4E4E4E;
+    border: 3px solid #005F73;
 }
 .nav-link:hover{
-    border: 1px solid white;
+    border: 3px solid #241F34;
     border-radius: 1000px;
 
 }
