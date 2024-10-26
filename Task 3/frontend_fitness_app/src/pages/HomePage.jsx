@@ -7,12 +7,12 @@ import pfp from "../assets/pfp.png";
 import "./Pages.css"
 
 const HomePage = () => {
-  let [healthDetail, setHealthDetail] = useState([]);
-  let [quote, setQuote] = useState("");
+  let [healthDetail,  setHealthDetail]  = useState([]);
+  let [quote,         setQuote]         = useState("");
   let [weeklyRoutine, setWeeklyRoutine] = useState({});
   let [todaysRoutine, setTodaysRoutine] = useState(null);
-  let [loading, setLoading] = useState(false);
-  let { authTokens, user, logoutUser } = useContext(AuthContext);
+  let [loading,       setLoading]       = useState(false);
+  let { authTokens, user, logoutUser }  = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,6 +82,7 @@ const HomePage = () => {
     let data = await response.json();
 
     if (response.status === 200) {
+      console.log(data);
       setWeeklyRoutine(data);
     } else if (response.statusText === "Unauthorized") {
       logoutUser();

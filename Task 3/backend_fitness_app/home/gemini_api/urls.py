@@ -3,8 +3,9 @@ from . import views
 from .views import *
 
 urlpatterns = [
-    path("", views.getRoutes, name="routes"),
-    path("create-and-get-weekly-routine/", views.createAndGetWeeklyRoutine, name="create-and-get-weekly-routine"),
-    path("get-weekly-routine/", views.getWeeklyRoutine, name="get-weekly-routine"),
-    path("get-quote/", views.getQuote, name="get-quote"),
+    path("",                        views.getRoutes,            name="routes"),
+    path("get-quote/",              views.getQuote,             name="get-quote"),
+    path("create-weekly-routine/",  views.createWeeklyRoutine,  name="create-weekly-routine"),
+    path("save-weekly-routine/",    views.saveWeeklyRoutine,    name="save-weekly-routine"),
+    path("get-weekly-routine/",     views.getWeeklyRoutine,     name="get-weekly-routine"),
 ]
