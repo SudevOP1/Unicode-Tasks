@@ -17,11 +17,32 @@ function App() {
         <AuthProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/create-routine" element={<CreateRoutinePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+
+            <Route
+              path="/"
+              element={<PrivateRoute><HomePage /></PrivateRoute>}
+            />
+
+            <Route
+              path="/profile"
+              element={<PrivateRoute><ProfilePage /></PrivateRoute>}
+            />
+
+            <Route
+              path="/create-routine"
+              element={<PrivateRoute><CreateRoutinePage /></PrivateRoute>}
+            />
+
+            <Route
+              path="/login"
+              element={<LoginPage />}
+            />
+
+            <Route
+              path="/register"
+              element={<RegisterPage />}
+            />
+
           </Routes>
         </AuthProvider>
       </BrowserRouter>

@@ -48,12 +48,13 @@ class Exercise(models.Model):
         ("sat", "sat"),
     ])
 
-    def __str__(self): return f"{self.date} | {self.user.username} | {self.name}"
+    def __str__(self): return f"{self.day} | {self.name}"
     
 class Steps(models.Model):
-    routine = models.ForeignKey(Routine, on_delete=models.CASCADE, null=False, related_name="steps")
-    steps   = models.IntegerField()
-    day     = models.CharField(max_length=3, choices=[
+    routine         = models.ForeignKey(Routine, on_delete=models.CASCADE, null=False, related_name="steps")
+    steps           = models.IntegerField()
+    completed       = models.BooleanField(default=False)
+    day             = models.CharField(max_length=3, choices=[
         ("sun", "sun"),
         ("mon", "mon"),
         ("tue", "tue"),
@@ -63,7 +64,7 @@ class Steps(models.Model):
         ("sat", "sat"),
     ])
 
-    def __str__(self): return self.date + self.user.username + str(self.steps)
+    def __str__(self): return self.day + str(self.steps)
 
 class DailyWeight(models.Model):
     user      = models.ForeignKey(User, on_delete=models.CASCADE, null=False)

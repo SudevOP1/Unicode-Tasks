@@ -16,11 +16,8 @@ const BentoBox = ({
                 borderRadius: "20px",
                 margin: "2vh",
                 marginTop: martop ? martop: "2vh",
-
             }}
-        >
-            {children}
-        </div>
+        >{children}</div>
     )
 }
 

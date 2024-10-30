@@ -28,6 +28,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+
 @api_view(["GET"])
 def getRoutes(request):
     routes = [
@@ -37,6 +38,7 @@ def getRoutes(request):
 
     return Response(routes)
 
+
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def getHealthDetails(request):
@@ -44,6 +46,7 @@ def getHealthDetails(request):
     health_details = user.healthdetail_set.all()
     serializer = HealthDetailSerializer(health_details, many=True)
     return Response(serializer.data)
+
 
 @api_view(["POST"])
 def registerUser(request):
@@ -103,3 +106,4 @@ def registerUser(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

@@ -183,10 +183,12 @@ def saveWeeklyRoutine(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def getWeeklyRoutine(request):
-    try:
+    routines = Routine.objects.filter(user=request.user)
+    if not routines:
+        return Response({"error": "Workout Plan not created yet."}, status=404)
 
-        routine = Routine.objects.get(user=request.user)
-
+    all_routines_data = []
+    for routine in routines:
         steps_data = {step.day: step.steps for step in routine.steps.all()}
         exercises_data = {}
 
@@ -205,38 +207,57 @@ def getWeeklyRoutine(request):
         routine_data = {
             "user": routine.user.username,
             "days": {
-                "sun": {
-                    "steps": steps_data.get("sun", 0),
-                    "exercises": exercises_data.get("sun", []),
-                },
-                "mon": {
-                    "steps": steps_data.get("mon", 0),
-                    "exercises": exercises_data.get("mon", []),
-                },
-                "tue": {
-                    "steps": steps_data.get("tue", 0),
-                    "exercises": exercises_data.get("tue", []),
-                },
-                "wed": {
-                    "steps": steps_data.get("wed", 0),
-                    "exercises": exercises_data.get("wed", []),
-                },
-                "thu": {
-                    "steps": steps_data.get("thu", 0),
-                    "exercises": exercises_data.get("thu", []),
-                },
-                "fri": {
-                    "steps": steps_data.get("fri", 0),
-                    "exercises": exercises_data.get("fri", []),
-                },
-                "sat": {
-                    "steps": steps_data.get("sat", 0),
-                    "exercises": exercises_data.get("sat", []),
-                },
+                "sun": {"steps": steps_data.get("sun", 0), "exercises": exercises_data.get("sun", [])},
+                "mon": {"steps": steps_data.get("mon", 0), "exercises": exercises_data.get("mon", [])},
+                "tue": {"steps": steps_data.get("tue", 0), "exercises": exercises_data.get("tue", [])},
+                "wed": {"steps": steps_data.get("wed", 0), "exercises": exercises_data.get("wed", [])},
+                "thu": {"steps": steps_data.get("thu", 0), "exercises": exercises_data.get("thu", [])},
+                "fri": {"steps": steps_data.get("fri", 0), "exercises": exercises_data.get("fri", [])},
+                "sat": {"steps": steps_data.get("sat", 0), "exercises": exercises_data.get("sat", [])},
             }
         }
+        all_routines_data.append(routine_data)
 
-        return Response(routine_data, status=200)
+    return Response({"routines": all_routines_data}, status=200)
+
+
+@api_view(["PUT"])
+@permission_classes([IsAuthenticated])
+def toggleExerciseCompleted(request):
+    name_of_ex = request.data.get("name")
+    if not name_of_ex:
+        return Response({"error": "Exercise name is required."}, status=400)
     
-    except Routine.DoesNotExist:
-        return Response({"error": "Workout Plan not created yet."}, status=404)
+    try:
+        exercise = Exercise.objects.get(name=name_of_ex, routine__user=request.user)
+        exercise.completed = not exercise.completed
+        exercise.save()
+        success_msg = "complete" if exercise.completed else "incomplete"
+        return Response({"success": f"Exercise marked as {success_msg}"}, status=200)
+    
+    except Exercise.DoesNotExist:
+        return Response({"error": "Exercise not found.", "exercise": name_of_ex}, status=404)
+    
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+
+
+@api_view(["PUT"])
+@permission_classes([IsAuthenticated])
+def toggleStepsCompleted(request):
+    day = request.data.get("day")
+    
+    try:
+        steps = Steps.objects.get(day=day, routine__user=request.user)
+        steps.completed = not steps.completed
+        steps.save()
+        success_msg = "complete" if steps.completed else "incomplete"
+        return Response({"success": f"Steps marked as {success_msg}"}, status=200)
+    
+    except Steps.DoesNotExist:
+        return Response({"error": "Steps Object not found."}, status=404)
+    
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)
+
+

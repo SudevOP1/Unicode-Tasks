@@ -20,7 +20,6 @@ const Header = () => {
                         Login
                     </Link>
                 )}
-                {/* {user && <p>Hello {user.username}</p>} */}
             </div>
         </div>
     );
