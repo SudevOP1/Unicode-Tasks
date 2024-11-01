@@ -1,8 +1,11 @@
+
+/* ------------ Login / Register Page ---------------------------------------------------------------------------------------------------------------- */
+
 body{
     background: #282C44;
 }
 *{
-    color: white;
+    color: black;
 }
 form{
     padding: 20px 30px;
@@ -142,3 +145,173 @@ input[type="number"] {
     display: flex;
     flex-direction: row;
 }
+
+
+.routine-heading {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 20%;
+    font-weight: bold;
+    color: black;
+}
+
+.routine-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.routine-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.exercise-item, .steps-item, .day-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.exercise-name, .steps-text, .day-summary {
+    font-size: 1.3rem;
+    color: black;
+}
+
+.loading-text, .no-routine-text {
+    font-size: 1.3rem;
+    color: black;
+    text-align: center;
+}
+
+
+.sliders-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10%;
+}
+.slider-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+.slider{
+    width: 40vw;
+    height: 3vh;
+}
+.slider-container h1{
+    color: black;
+    font-size: 1.3rem;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+}
+  
+
+.weekday-container{
+    /* border: 2px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.weekday-first{
+    /* border: 2px solid red; */
+}
+.weekday-remaining{
+    /* border: 2px solid yellow; */
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.weekday-second{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.weekday-third{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.weekday{
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.pf{
+    width : 30px;
+    height: 30px;
+    background: #000;
+    margin-right: 10px;
+
+}
+
+
+/* ------------ Profile Page ---------------------------------------------------------------------------------------------------------------- */
+
+.profile-page-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px 20px 20px;
+
+}
+.profile-page-table th,
+.profile-page-table td{
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+.profile-page-table th{
+    background-color: #005F73;
+    color: white;
+}
+.profile-page-table td{
+    vertical-align: top;
+    color: #d2d2d2;
+}
+.profile-page-table ul{
+    padding-left: 20px;
+    margin: 0;
+}
+.profile-page-table li{
+    margin-bottom: 3px;
+    color: #d2d2d2;
+    list-style-type: none;
+    margin-left: -20px;
+}
+.profile-page-left-side {
+    padding-right: 20px;
+    width: fit-content;
+    width: 60%;
+    height: 100%;
+}
+.profile-page-right-side {
+    width: fit-content;
+    width: 40%;
+    height: 100%;
+    padding: 20px 20px;
+}
+  

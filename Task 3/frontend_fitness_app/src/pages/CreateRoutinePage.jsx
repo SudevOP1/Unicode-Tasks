@@ -10,7 +10,7 @@ const CreateRoutinePage = () => {
     let [weeklyRoutine, setWeeklyRoutine] = useState([]);
     let navigate = useNavigate();
     
-    const createWeeklyRoutine = async () => {
+    let createWeeklyRoutine = async () => {
         setLoading(true);
         let response = await fetch("http://127.0.0.1:8000/gemini-api/create-weekly-routine/", {
             method: "GET",
@@ -23,6 +23,7 @@ const CreateRoutinePage = () => {
   
         if (response.status === 200) {
             setWeeklyRoutine(data.days);
+            console.log(data);
         } else if (response.statusText === "Unauthorized") {
             logoutUser();
         } else {
@@ -31,7 +32,7 @@ const CreateRoutinePage = () => {
         setLoading(false);
     };
     
-    const saveWeeklyRoutine = async () => {
+    let saveWeeklyRoutine = async () => {
         setLoading(true);
         let response = await fetch("http://127.0.0.1:8000/gemini-api/save-weekly-routine/", {
             method: "POST",
@@ -54,50 +55,69 @@ const CreateRoutinePage = () => {
     };
 
     return (
-        <div>
-            <h1>Create a Weekly Routine for Yourself!</h1>
-            <button style={{ color: "black" }} onClick={createWeeklyRoutine}>
-                {weeklyRoutine.length > 0 ? "Generate New Routine" : "Create!"}
-            </button>
+        <div style={{ padding: "20px" }}>
+            <h1 style={{ color: "#E88547" }}>Create a Weekly Routine for Yourself!</h1>
+            {
+                weeklyRoutine.length > 0
+                ? null
+                : <button className="submit-btn" style={{ margin: "30px 0" }} onClick={createWeeklyRoutine}>Create!</button>
+            }
+            {loading && <p style={{ fontSize: "1.3rem", color: "white" }}>Loading...</p>}
 
-            {loading && <p>Loading...</p>}
-
-            {weeklyRoutine.length === 0 && !loading && <p>No routine created yet.</p>}
+            {weeklyRoutine.length === 0 && !loading && <p style={{ fontSize: "1.3rem", color: "white" }}>No routine created yet.</p>}
+            
+            {
+                weeklyRoutine.length > 0
+                ? <button className="submit-btn" style={{ margin: "20px 20px 30px 0px" }} onClick={createWeeklyRoutine}>Generate New Routine</button>
+                : null
+            }
+            <button className="submit-btn" onClick={saveWeeklyRoutine}>Save Routine</button>
             
             {!loading && weeklyRoutine.length > 0 && (
-                <div>
-                    <table border="1" cellPadding="10">
+                <div style={{ width: "100%" }}>
+                    <table className="profile-page-table" style={{ width: "100%", margin: "0" }}>
                         <thead>
                             <tr>
-                                <th>Day</th>
-                                <th>Muscle</th>
-                                <th>Exercises</th>
-                                <th>Steps</th>
+                                <th style={{ fontSize: "1.7rem" }}>Day</th>
+                                <th style={{ fontSize: "1.7rem" }}>Muscle</th>
+                                <th style={{ fontSize: "1.7rem" }}>Exercises</th>
+                                <th style={{ fontSize: "1.7rem" }}>Sets x Reps</th>
+                                <th style={{ fontSize: "1.7rem" }}>Steps</th>
                             </tr>
                         </thead>
                         <tbody>
                             {weeklyRoutine.map((day, index) => (
                                 <tr key={index}>
-                                    <td>{day.day}</td>
-                                    <td>{day.muscle}</td>
-                                    <td>
+                                    <td style={{ fontSize: "1.3rem" }}>{day.day}</td>
+                                    <td style={{ fontSize: "1.3rem" }}>{day.muscle}</td>
+                                    <td style={{ fontSize: "1.3rem" }}>
                                         {day.muscle === "Rest" ? "Rest Day" : (
                                             <ul>
                                                 {day.exercises.map((exercise, idx) => (
                                                     <li key={idx}>
-                                                        {exercise.name} - {exercise.reps} reps, {exercise.sets} sets
+                                                        {exercise.name}
                                                     </li>
                                                 ))}
                                             </ul>
                                         )}
                                     </td>
-                                    <td>{day.steps} steps</td>
+                                    <td style={{ fontSize: "1.3rem" }}>
+                                        {day.muscle === "Rest" ? "Rest Day" : (
+                                            <ul>
+                                                {day.exercises.map((exercise, idx) => (
+                                                    <li key={idx}>
+                                                        {exercise.sets} x {exercise.reps}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </td>
+                                    <td style={{ fontSize: "1.3rem" }}><p style={{ color: "#d2d2d2", display: "flex", justifyContent: "end" }}>{day.steps}</p></td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
 
-                    <button style={{ color: "black" }} onClick={saveWeeklyRoutine}>Save Routine</button>
                 </div>
             )}
         </div>

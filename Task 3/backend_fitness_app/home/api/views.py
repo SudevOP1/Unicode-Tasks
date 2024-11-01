@@ -43,7 +43,7 @@ def getRoutes(request):
 @permission_classes([IsAuthenticated])
 def getHealthDetails(request):
     user = request.user
-    health_details = user.healthdetail_set.all()
+    health_details = user.health_details.all()
     serializer = HealthDetailSerializer(health_details, many=True)
     return Response(serializer.data)
 

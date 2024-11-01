@@ -39,63 +39,83 @@ const ProfilePage = () => {
 
   return (
     <div>
-      {!loading && !weeklyRoutine ? (
-        <div>
-          <h4>Routine not created yet!</h4>
-          <a href="/create-routine">Create a Routine!</a>
-        </div>
-      ) : (
-        <div>
-          <table border="1" cellPadding="10">
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>Muscle</th>
-                <th>Exercises</th>
-                <th>Sets x Reps</th>
-              </tr>
-            </thead>
-            <tbody>
-              {weeklyRoutine?.routines[0]?.days &&
-                Object.entries(weeklyRoutine.routines[0].days).map(([day, details]) => (
-                  <tr key={day}>
-                    <td>{day}</td>
-                    <td>{details.exercises[0]?.muscle || "Rest Day"}</td>
-                    <td>
-                      {details.exercises.length > 0 ? (
-                        <ul>
-                          {details.exercises.map((exercise, index) => (
-                            <li key={index}>
-                              {exercise.name}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        "Rest Day"
-                      )}
-                    </td>
-                      {details.exercises.length > 0 ? (
-                        <ul>
-                          {details.exercises.map((exercise, index) => (
-                            <li key={index}>
-                              {exercise.sets} x {exercise.reps}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        "Rest Day"
-                      )}
-                    <td>
+      <h1 style={{ padding: "20px 20px", color: "#E88547" }}>Profile Page</h1>
+      <div style={{ display: "flex" }}>
+        
+      <div className="profile-page-left-side">
+        {!loading && !weeklyRoutine ? (
+          <div style={{ margin: "30px 20px 20px" }}>
+            <a style={{ color: "#2E95D3" }} href="/create-routine">Click here to create a Routine!</a>
+          </div>
+        ) : (
+          <div>
+            <table className="profile-page-table">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Muscle</th>
+                  <th>Exercises</th>
+                  <th>Sets x Reps</th>
+                  <th>Steps</th>
+                </tr>
+              </thead>
+              <tbody>
+                {weeklyRoutine?.routines[0]?.days &&
+                  Object.entries(weeklyRoutine.routines[0].days).map(([day, details]) => (
+                    <tr key={day}>
+                      <td>{
+                        day   === "mon" ? "Monday"
+                        : day === "tue" ? "Tuesday"
+                        : day === "wed" ? "Wednesday"
+                        : day === "thu" ? "Thursday"
+                        : day === "fri" ? "Friday"
+                        : day === "sat" ? "Saturday"
+                        : day === "sun" ? "Sunday"
+                        : null
+                      }</td>
+                      <td>{details.exercises[0]?.muscle || "Rest Day"}</td>
+                      <td>
+                        {details.exercises.length > 0
+                        ? <ul>
+                            {details.exercises.map((exercise, index) =>
+                              <li key={index}>{exercise.name}</li>
+                            )}
+                          </ul>
+                        : "Rest Day"
+                        }
+                      </td>
+                      <td>
+                        { details.exercises.length > 0
+                        ? <ul>
+                            {details.exercises.map((exercise, index) => (
+                              <li key={index}>{exercise.sets} x {exercise.reps}</li>
+                            ))}
+                          </ul>
+                        : "———"
+                        }
+                      </td>
+                      <td><p style={ {display: "flex", justifyContent: "end", color: "#d2d2d2" }}>{details?.steps || "———"}</p></td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
 
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      )}
+      <div className="profile-page-right-side">
+        <h3>Name</h3>
+        <h3>Username</h3>
+        <h3>Email</h3>
+        <h3>Weight</h3>
+        <h3>Height</h3>
+        <h3>Height</h3>
+      </div>
+      
+      </div>
     </div>
+
   );
 };
 
