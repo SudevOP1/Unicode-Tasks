@@ -4,18 +4,23 @@ from django.contrib.auth.models import User         # type: ignore
 # Create your models here.
 
 class HealthDetail(models.Model):
-    user            = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name="health_details")
-    gender          = models.CharField(max_length=6, choices=[("male", "Male"), ("female", "Female")])
-    weight          = models.FloatField()
-    age             = models.IntegerField()
-    height          = models.FloatField()
-    weight_goal     = models.FloatField()
-    workout_streak  = models.IntegerField(default=0, null=False)
-    date_created    = models.DateField(auto_now_add=True)
-    fitness_goal    = models.CharField(max_length=11, choices=[
+    user                = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name="health_details")
+    gender              = models.CharField(max_length=6, choices=[("male", "Male"), ("female", "Female")])
+    weight              = models.FloatField()
+    age                 = models.IntegerField()
+    height              = models.FloatField()
+    weight_goal         = models.FloatField()
+    workout_streak      = models.IntegerField(default=0, null=False)
+    date_created        = models.DateField(auto_now_add=True)
+    fitness_goal        = models.CharField(max_length=11, choices=[
         ("weight_loss", "weight_loss"),
         ("muscle_gain", "muscle_gain"),
         ("maintenance", "maintenance"),
+    ])
+    subscription_tier   = models.CharField(max_length=14, default="FitStarter" ,choices=[
+        ("FitStarter",      "FitStarter"),
+        ("StrengthMaster",  "StrengthMaster"),
+        ("FitnessTitan",    "FitnessTitan"),
     ])
 
     def __str__(self): return self.user.username

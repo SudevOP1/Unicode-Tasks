@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import AuthContext from '../context/AuthContext';
-import BentoBox from '../components/BentoBox';
-import Slider from '../components/Slider';
-import fireGif from "../assets/fire.gif";
-import pfp from "../assets/pfp.png";
+
 import "./Pages.css"
-import CheckBoxComponent from '../components/CheckBoxComponent';
+import AuthContext        from '../context/AuthContext';
+import BentoBox           from '../components/BentoBox';
+import Slider             from '../components/Slider';
+import CheckBoxComponent  from '../components/CheckBoxComponent';
+import WeightsGraph       from '../components/WeightsGraph';
+import fireGif            from "../assets/fire.gif";
+import pfp                from "../assets/pfp.png";
 
 import Abs        from "../assets/muscles/Abs.png"
 import Arms       from "../assets/muscles/Arms.png"
@@ -13,8 +15,7 @@ import Back       from "../assets/muscles/Back.png"
 import Biceps     from "../assets/muscles/Biceps.png"
 import Chest      from "../assets/muscles/Chest.png"
 import Legs       from "../assets/muscles/Legs.png"
-import Rest1      from "../assets/muscles/Rest1.png"
-import Rest2      from "../assets/muscles/Rest2.png"
+import Rest       from "../assets/muscles/Rest.png"
 import Shoulders  from "../assets/muscles/Shoulders.png"
 import Triceps    from "../assets/muscles/Triceps.png"
 
@@ -37,8 +38,7 @@ const HomePage = () => {
     Biceps    : Biceps,
     Chest     : Chest,
     Legs      : Legs,
-    Rest      : Rest2,
-    // Rest      : Rest1,
+    Rest      : Rest,
     Shoulders : Shoulders,
     Triceps   : Triceps,
   };
@@ -241,7 +241,7 @@ const HomePage = () => {
     try {
       if (response.status === 200) {
         setUserWeights(data);
-        // console.log("User Weights: ", userWeights);
+        console.log("User Weights: ", userWeights);
       } else if(response.statusText === "Unauthorized") {
         logoutUser();
       } else {
@@ -411,11 +411,15 @@ const HomePage = () => {
 
             <div className="bento-container-vertical">
               <BentoBox width="30vw" height="28vh" color="#F28B82" martop="0px">
-                <div className="weight-graph-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%", flexDirection: "column", gap: "15px" }}>
-                  <h1 style={{ color: "black" }}>You're doing Great!</h1>
-                  <div className="weight-graph" style={{ border: "1px solid black", borderRadius: "10px", width: "70%", height: "50%", display: "flex", justifyContent: "center", alignItems: "center", color: "black" }}>
-                    Weight Graph
-                  </div>
+                <h1 className="weight-graph-container-heading">You're doing great!</h1>
+                <div className="weight-graph-container">
+                  {
+                    loading
+                    ? <p className="loading-text">Loading...</p>
+                    : <div style={{ width: "95%", height: "90%" }}>
+                        <WeightsGraph weightsData={userWeights.weights || []} />
+                      </div>
+                  }
                 </div>
               </BentoBox>
 

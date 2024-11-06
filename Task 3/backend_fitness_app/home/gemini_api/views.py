@@ -2,7 +2,7 @@ from rest_framework.response    import Response                             # ty
 from rest_framework.decorators  import api_view, permission_classes         # type: ignore
 from rest_framework.permissions import IsAuthenticated                      # type: ignore
 import google.generativeai as genai                                         # type: ignore
-import os, json
+import json
 from datetime import timedelta, date
 from home.models import *
 
